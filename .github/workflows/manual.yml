@@ -20,7 +20,7 @@ jobs:
       - name: action-zip
         uses: montudor/action-zip@v1.0.0
       - name: Copy Artifacts
-        run: mkdir dist && cp -R target/lib dist/ && cp target/*.jar dist/ && ls -la dist/ && zip -r radix-address-generator.zip dist/ && ls -la
+        run: mkdir dist && cp -R target/lib dist/ && cp target/radix-*.jar dist/ && ls -la dist/ && zip -r radix-address-generator.zip dist/ && ls -la
       - uses: actions/checkout@master
       - name: Create release
         uses: Roang-zero1/github-create-release-action@v2.3.2
