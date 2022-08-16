@@ -20,15 +20,16 @@ jobs:
       - name: action-zip
         uses: montudor/action-zip@v1.0.0
       - name: Copy Artifacts
-        run: mkdir dist && cp -R target/lib dist/ && cp target/*.jar dist/ && ls -la dist/ && zip -r radix-address-generator.zip dist/
+        run: mkdir dist && cp -R target/lib dist/ && cp target/*.jar dist/ && ls -la dist/ && zip -r radix-address-generator.zip dist/ && ls -la
       - uses: actions/checkout@master
       - name: Create release
         uses: Roang-zero1/github-create-release-action@v2.3.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: ls -la
       - name: Create GitHub release
         uses: Roang-zero1/github-upload-release-artifacts-action@v2.1.0
         with:
-          args: radix-address-generator.zip
+          args: ./radix-address-generator.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
