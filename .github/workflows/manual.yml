@@ -16,12 +16,11 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
       - name: Build with Maven
-        run: mvn clean --batch-mode --update-snapshots package
+        run: mvn --batch-mode package
       - name: action-zip
         uses: montudor/action-zip@v1.0.0
       - name: Copy Artifacts
         run: mkdir dist && cp -R target/lib dist/ && cp target/radix-*.jar dist/ && ls -la dist/ && zip -r radix-address-generator.zip dist/ && ls -la
-      - uses: actions/checkout@master
       - name: Create release
         uses: Roang-zero1/github-create-release-action@v2.3.2
         env:
