@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.dogecube</groupId>
     <artifactId>radix-key-generator</artifactId>
-    <version>0.1</version>
+    <version>0.2</version>
     <name>radix-key-generator</name>
     <description>Radix Vanity Address Generator</description>
     <properties>

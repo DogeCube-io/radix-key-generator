@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import static io.dogecube.utils.Formatter.shortNumber;
 import static io.dogecube.utils.Formatter.withNumberGroups;
 
 public class KeyStoreGeneratorMain {
@@ -29,7 +30,9 @@ public class KeyStoreGeneratorMain {
         validator.validate(criteria);
         printExpectations(criteria);
 
-        KeyStoreGenerator generator = new KeyStoreGenerator(params, criteria);
+        Generator generator = params.getMode() == GeneratorParams.Mode.GEN_KEY
+                ? new KeyStoreGenerator(params, criteria)
+                : new MnemonicGenerator(params, criteria);
         if (params.getKeyStoreDir() != null) {
             new File(params.getKeyStoreDir()).mkdirs();
         }
@@ -69,8 +72,8 @@ public class KeyStoreGeneratorMain {
             System.out.println(criteria + " -> " + withNumberGroups(difficulty));
             frequency = frequency.add(BigDecimal.ONE.divide(BigDecimal.valueOf(difficulty), 25, RoundingMode.HALF_EVEN));
         }
-        BigDecimal result = divide(divide(BigDecimal.ONE, frequency), BigDecimal.valueOf(1_000_000));
-        System.out.println("Expecting a match every " + withNumberGroups(Math.round(result.doubleValue())) + "M iterations.");
+        BigDecimal result = divide(BigDecimal.ONE, frequency);
+        System.out.println("Expecting a match every " + shortNumber(Math.round(result.doubleValue())) + " iterations.");
     }
 
     private static BigDecimal divide(BigDecimal a, BigDecimal b) {

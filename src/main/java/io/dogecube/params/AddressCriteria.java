@@ -2,6 +2,8 @@ package io.dogecube.params;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class AddressCriteria {
     // sneaky zero byte location (index) in the public key: right-to-left and left-to-right
@@ -42,6 +44,16 @@ public class AddressCriteria {
         }
 
         this.difficulty = calculateDifficulty();
+    }
+
+    public static boolean containsAny(List<AddressCriteria> criteria, char[] accountChars) {
+        for (AddressCriteria criterion : criteria) {
+            if (criterion.isMatchedBy(accountChars)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public boolean isMatchedBy(char[] accountChars) {
