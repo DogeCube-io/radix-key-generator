@@ -23,7 +23,7 @@ import static com.google.common.base.Preconditions.checkState;
 public class MnemonicAddressQuickGenerator {
     private static final int ENTROPY_BITS = 128;
 
-    public static final int FORCE_RESEED_INTERVAL = 10_000_000;
+    public static final int FORCE_RESEED_INTERVAL = 10_000;
 
     private final ECDomainParameters params = ECKeyUtils.domain();
     private final CachedECMult mult = new CachedECMult(params.getG());

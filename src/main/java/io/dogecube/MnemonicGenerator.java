@@ -88,7 +88,6 @@ public class MnemonicGenerator extends Generator {
                         System.out.println("Mnemonic: " + mnemonic);
                     }
                     found = true;
-                    break;
                 }
             }
         }
