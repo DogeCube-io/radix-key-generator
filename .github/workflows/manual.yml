@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v3.6.0
         with:
           java-version: '17'
           distribution: 'adopt'
@@ -22,11 +22,11 @@ jobs:
       - name: Create Release Artifact
         run: mkdir dist && cp -R target/lib dist/ && cp target/radix-*.jar dist/ && cd dist && zip -r ../radix-address-generator.zip .
       - name: Create release
-        uses: Roang-zero1/github-create-release-action@v2.3.2
+        uses: Roang-zero1/github-create-release-action@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create GitHub release
-        uses: Roang-zero1/github-upload-release-artifacts-action@v2.1.0
+        uses: Roang-zero1/github-upload-release-artifacts-action@v3.0.0
         with:
           args: ./radix-address-generator.zip
         env:
