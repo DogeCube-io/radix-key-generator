@@ -79,7 +79,7 @@ public class GeneratorParams {
     private static GeneratorParams printAndExit() {
         System.out.println("""
                 Usage:
-                    java -jar radix-key-generator-0.2.jar [mode] <params> <patterns>
+                    java -jar radix-key-generator-0.2.2.jar [mode] <params> <patterns>
                     
                 Mode (optional) should be on of:
                     --gen-key       - (default) generates a private key and stores it into a Java keystore.
@@ -115,10 +115,10 @@ public class GeneratorParams {
                                 
                 Examples:
                     - private keys Mode:
-                        java -jar radix-key-generator-0.2.jar --dir ./keys --pass qwerty d0ge3x* *d0ge3x grandma
-                        java -jar radix-key-generator-0.2.jar --file ./keystore.ks --pass qwerty -t 1 --print d0ge3x* *d0ge3x grandma
+                        java -jar radix-key-generator-0.2.2.jar --dir ./keys --pass qwerty d0ge3x* *d0ge3x grandma
+                        java -jar radix-key-generator-0.2.2.jar --file ./keystore.ks --pass qwerty -t 1 --print d0ge3x* *d0ge3x grandma
                     - mnemonic phrase Mode:
-                        java -jar radix-key-generator-0.2.jar --mnemonic -t 4 --count 5 d0ge3x* *d0ge3x grandma
+                        java -jar radix-key-generator-0.2.2.jar --mnemonic -t 4 --count 5 d0ge3x* *d0ge3x grandma
                 """);
         return null;
     }
