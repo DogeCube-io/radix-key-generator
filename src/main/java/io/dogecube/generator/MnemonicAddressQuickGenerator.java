@@ -117,7 +117,9 @@ public class MnemonicAddressQuickGenerator {
 
     private void updateOrRegenerateSeed() {
         if (addIterations < FORCE_RESEED_INTERVAL) {
-            seed[addIterations % seed.length]++;
+            // do not return the byte to the previous state,
+            // so when the loop returns to the same byte, other bytes will already have changed
+            seed[(addIterations / 255) % seed.length]++;
             addIterations++;
         } else {
             generateRandomSeed();
